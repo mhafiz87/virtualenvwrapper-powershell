@@ -1,4 +1,4 @@
-﻿#
+#
 # Python virtual env manager inspired by VirtualEnvWrapper
 #
 # Copyright (c) 2017 Regis FLORET
@@ -127,10 +127,10 @@ function New-Python2Env($Python, $Name)  {
 function New-Python3Env($Python, $Name) {
     if (!$Python) {
         $PythonExe = Find-Python
-    } else {
-        $PythonExe = Join-Path (Split-Path $Python -Parent) "python.exe"
     }
-
+	else {
+	    $PythonExe = $Python	
+	}
     $Command = "& '$PythonExe' -m venv"
 
     Invoke-CreatePyEnv $Command $Name
@@ -153,7 +153,7 @@ function Find-Python ($Python) {
 
     # No python given, get the default one
     if (!$Python) {
-        return Get-Command "python.exe" | Select-Object -ExpandProperty Source
+        return Get-Command "python" | Select-Object -ExpandProperty Source
     }
 
     # The python path doesn't exist
