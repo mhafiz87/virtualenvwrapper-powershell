@@ -6,10 +6,17 @@ Unless the previous version of my esteemed colleague [Guillermo Lòpez](https://
 
 ## Installation
 
-Just use the `Install.ps1` script:
+Copy and paste these lines in powershell:
 
 ```powershell
-./Install.ps1
+cd $env:userprofile;`
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/mhafiz87/virtualenvwrapper-powershell/master/VirtualEnvWrapper.psm1" -OutFile "./VirtualEnvWrapper.psm1";`
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/mhafiz87/virtualenvwrapper-powershell/master/Install.ps1" -OutFile "./Install.ps1";`
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/mhafiz87/virtualenvwrapper-powershell/master/Profile.ps1" -OutFile "./Profile.ps1";`
+&"./Install.ps1";`
+Remove-Item VirtualEnvWrapper.psm1;`
+Remove-Item Install.ps1;`
+Remove-Item Profile.ps1
 ```
 
 and the script will create required path if needed and install the `profile.ps1` file directly to 
